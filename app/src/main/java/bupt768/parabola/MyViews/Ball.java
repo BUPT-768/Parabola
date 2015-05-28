@@ -72,5 +72,10 @@ public class Ball implements ISprite {
                 break;
         }
     }
+
+    @Override
+    public void sendMessage(Message message) {
+
+    }
 }
 
