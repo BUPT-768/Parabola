@@ -16,4 +16,10 @@
     <bupt768.parabola.MyViews.MySurfaceView
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+    <Button
+        android:id="@+id/turn_right_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="turn right"/>
+
 </RelativeLayout>

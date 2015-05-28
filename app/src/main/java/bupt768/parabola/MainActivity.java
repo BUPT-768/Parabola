@@ -2,18 +2,45 @@ package bupt768.parabola;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import bupt768.parabola.MyViews.Message;
+import bupt768.parabola.MyViews.MessageType;
 import bupt768.parabola.MyViews.MySurfaceView;
 
 
 public class MainActivity extends ActionBarActivity {
 
+    private Button turnLeftButton;
+    private Button turnRightButton;
+    private static final String TAG="MainActivity";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        MySurfaceView mySurfaceView = new MySurfaceView(MainActivity.this);
-        setContentView(mySurfaceView);
+        final MySurfaceView mySurfaceView = new MySurfaceView(MainActivity.this);
+        setContentView(R.layout.activity_main);
+        turnRightButton=(Button)findViewById(R.id.turn_right_button);
+        turnRightButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Map<String,Integer> action=new HashMap<String, Integer>();
+                action.put("offsetX",50);
+                action.put("offsetY", 60);
+                Message moveMessage=new Message(MessageType.Control,"ball1",action);
+                mySurfaceView.manager.getMessage(moveMessage);
+                Log.d(TAG,"click");
+            }
+        });
+
+
 //        setContentView(R.layout.activity_main);
     }
 
